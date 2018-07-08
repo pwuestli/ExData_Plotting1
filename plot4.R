@@ -5,6 +5,7 @@ plot4 <- function(){
       data <- data[data$Date == '1/2/2007' | data$Date == '2/2/2007',]
       ## Add datetime column
       data$datetime <- strptime(paste(data$Date, data$Time), format = "%d/%m/%Y %H:%M:%S")
+      dev.copy(png, file = "ExData_Plotting1/plot4.png", width = 480, height = 480)
       ## plot 2 by 2
       par(mfrow = c(2,2))
       ## first plot, global active power
@@ -18,8 +19,5 @@ plot4 <- function(){
       legend(x = "topright",  legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col = c('Black', 'Red', 'Blue'), lty = 1, bty = 'n', cex = 0.7)
       ## Fourth plot, gloabl reactive power
       plot( x = data$datetime,  y = data$Global_reactive_power, type = 'l', main = '', xlab = 'datetime', ylab = 'Global_reactive_power')
-      
-      ## save plot
-      dev.copy(png, file = "ExData_Plotting1/plot4.png", width = 480, height = 480)
       dev.off()
 }

@@ -6,10 +6,10 @@ plot3 <- function(){
       ## Add datetime column
       data$datetime <- strptime(paste(data$Date, data$Time), format = "%d/%m/%Y %H:%M:%S")
       ## Plot and save
+      dev.copy(png, file = "ExData_Plotting1/plot3.png", width = 480, height = 480)
       plot( x = data$datetime,  y = data$Sub_metering_1, type = 'l', main = '', xlab = '', ylab = 'Energy sub metering')
       lines(x = data$datetime,  y = data$Sub_metering_2, col = 'Red')
       lines(x = data$datetime,  y = data$Sub_metering_3, col = 'Blue')
       legend(x = "topright",  legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col = c('Black', 'Red', 'Blue'), lty = 1)
-      dev.copy(png, file = "ExData_Plotting1/plot3.png", width = 480, height = 480)
       dev.off()
 }
